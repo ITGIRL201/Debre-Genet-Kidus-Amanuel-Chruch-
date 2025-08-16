@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Debre Genet Kidus Amanuel EOTC — Media Library</title>
+
+<!-- ====== FONTS ====== -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+/* ------------------------
+   Base & Theme
+------------------------- */
+:root{
+  --gold:#d4af37;
+  --deep:#5a2e19;
+  --bg1:#fff8f0;
+  --bg2:#fbe4d8;
+  --card:#ffffff;
+  --text:#333;
+  --soft:rgba(212,175,55,.25);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',sans-serif;
+  color:var(--text);
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),#ffe9cc);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ------------------------
+   Welcome Overlay (optional)
+------------------------- */
+#welcome{
+  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:16px;background:radial-gradient(1200px 600px at 50% -10%,rgba(255,255,255,.95),rgba(255,255,255,.8),rgba(255,255,255,.6) 60%,transparent 70%), linear-gradient(180deg,#fff9f1,rgba(255,255,255,.7));
+  z-index:9999;animation:fadeOut 1s ease 3.5s forwards;
+}
+.rays{
+  position:absolute;inset:-20%;
+  background:radial-gradient(circle at center, rgba(255,255,200,.6) 0%, transparent 60%);
+  animation:spin 12s linear infinite;filter:blur(12px);
+}
+#welcome h2{
+  font-size:2rem;color:var(--deep);text-align:center;
+  text-shadow:0 0 24px rgba(255,255,255,.9),0 0 40px var(--soft);
+}
+#skipWelcome{
+  background:var(--deep);color:#fff;border:none;padding:8px 14px;border-radius:999px;
+  cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes fadeOut{to{opacity:0;visibility:hidden}}
+
+/* ------------------------
+   Nav
+------------------------- */
+.navbar{
+  position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
+  box-shadow:0 6px 24px rgba(0,0,0,.07);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;
+}
+.brand{font-weight:800;color:var(--deep);letter-spacing:.3px}
+nav a{
+  text-decoration:none;color:#444;margin:0 10px;padding:6px 10px;border-radius:999px;transition:.25s;
+}
+nav a:hover{background:rgba(212,175,55,.15);color:var(--deep)}
+
+/* Google Translate box alignment */
+#translateWrap{display:flex;align-items:center;gap:10px}
+
+/* ------------------------
+   Sections
+------------------------- */
+section{padding:56px 18px}
+.container{max-width:1200px;margin:0 auto}
+.section-title{
+  font-size:2rem;color:var(--deep);margin-bottom:18px;display:inline-block;
+  border-left:6px solid var(--gold);padding-left:12px;
+  background:linear-gradient(90deg,rgba(212,175,55,.12),transparent);
+  animation:slideIn .6s ease both;
+}
+@keyframes slideIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
+
+/* ------------------------
+   Hero / Home
+------------------------- */
+.hero{
+  display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center
+}
+.hero h1{
+  font-size:2.6rem;color:var(--deep);
+  text-shadow:0 0 18px rgba(255,255,255,.9),0 0 24px var(--soft);
+}
+.hero p{margin-top:10px;line-height:1.75}
+.hero-card{
+  background:var(--card);border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.08)
+}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+
+/* ------------------------
+   Shared grids
+------------------------- */
+.media-grid{
+  display:grid;gap:20px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+}
+.media-card{
+  background:var(--card);border-radius:16px;padding:14px;text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  transition:transform .35s ease, box-shadow .35s ease; cursor:pointer;
+}
+.media-card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,0,0,.12),0 0 0 6px rgba(212,175,55,.15)}
+.media-card img{width:100%;border-radius:10px;margin-bottom:10px;transition:transform .35s}
+.media-card:hover img{transform:scale(1.04)}
+.media-card p{font-weight:600}
+.media-card a{text-decoration:none;color:#444}
+.media-card a:hover{color:var(--deep)}
+
+/* Search bars */
+.searchbar{
+  margin:8px 0 22px 0;display:flex;justify-content:center
+}
+.searchbar input{
+  width:min(720px,95%);padding:12px 16px;border-radius:999px;border:2px solid transparent;outline:none;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);transition:.3s;background:#fff;
+}
+.searchbar input:focus{border-color:var(--gold);box-shadow:0 0 0 6px rgba(212,175,55,.18)}
+
+/* ------------------------
+   Pictures gallery
+------------------------- */
+.gallery{columns:1;column-gap:16px}
+@media (min-width:640px){.gallery{columns:2}}
+@media (min-width:980px){.gallery{columns:3}}
+.gallery figure{
+  break-inside:avoid;background:#fff;margin:0 0 16px;border-radius:14px;overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.08);transition:transform .25s
+}
+.gallery figure:hover{transform:translateY(-4px)}
+.gallery img{width:100%;display:block}
+.gallery figcaption{padding:10px 12px;font-size:.9rem;color:#555}
+
+/* ------------------------
+   Contact
+------------------------- */
+.contact-card{
+  background:#fff;border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);
+  display:grid;gap:16px;grid-template-columns:1fr 1fr;
+}
+.contact-card form{display:grid;gap:10px}
+.contact-card input,.contact-card textarea{
+  width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid #ddd;outline:none;transition:.25s;background:#fff
+}
+.contact-card input:focus,.contact-card textarea:focus{border-color:var(--gold);box-shadow:0 0 0 6px rgba(212,175,55,.12)}
+.contact-card button{
+  background:linear-gradient(135deg,var(--deep),#7a4a31);color:#fff;border:none;border-radius:999px;
+  padding:12px 16px;cursor:pointer;transition:.25s
+}
+.contact-card button:hover{filter:brightness(1.06)}
+@media(max-width:900px){.contact-card{grid-template-columns:1fr}}
+
+/* ------------------------
+   Footer & Back to top
+------------------------- */
+footer{padding:30px 18px;text-align:center;color:#666}
+#toTop{
+  position:fixed;right:16px;bottom:16px;background:var(--deep);color:#fff;border:none;border-radius:999px;
+  padding:10px 12px;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.2);display:none
+}
+#toTop.show{display:block}
+</style>
+</head>
+<body>
+
+<!-- ====== Welcome Overlay (optional) ====== -->
+<div id="welcome" aria-hidden="true">
+  <div class="rays"></div>
+  <h2>Welcome — Peace be with you ✨</h2>
+  <button id="skipWelcome">Enter Site</button>
+</div>
+
+<!-- ====== NAVBAR ====== -->
+<header class="navbar">
+  <div class="nav-inner">
+    <div class="brand">Debre Genet Kidus Amanuel EOTC</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#books">Books</a>
+      <a href="#songs">Songs</a>
+      <a href="#pictures">Pictures</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div id="translateWrap">
+      <span style="font-size:.9rem;color:#666">Translate:</span>
+      <div id="google_translate_element"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ====== HOME ====== -->
+<section id="home">
+  <div class="container">
+    <div class="hero">
+      <div>
+        <h1>Welcome to Our Church Family</h1>
+        <p>
+          For over 20 years we’ve served Philadelphia and the surrounding area as a house of prayer, hope, and community.
+          Explore books, songs, and photos, learn about our faith, and reach out—we’re glad you’re here.
+        </p>
+      </div>
+      <div class="hero-card">
+        <strong>Service Times (example)</strong>
+        <ul style="margin-top:8px;line-height:1.9">
+          <li>Saturday Vespers – 6:00 PM</li>
+          <li>Sunday Divine Liturgy – 9:00 AM</li>
+          <li>Bible Study – Wed 7:00 PM</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Our Church</h2>
+    <div class="hero-card" style="animation:slideIn .6s .1s both">
+      <p>
+        Our church has been serving Philadelphia and the surrounding area for more than 20 years. We believe in one God, God the Father, the Almighty, who created heaven and earth, and all things seen and unseen. We believe in one Lord Jesus Christ, the Only-Begotten Son of God, begotten of the Father before all ages; Light of Light, true God of true God, begotten not created, of one essence with the Father, by whom all things were made; Who for us men and our salvation came down from heaven, and was incarnate of the Holy Spirit and of the Virgin Mary, and became Man.
+      </p>
+      <p>
+        And He was crucified for us under Pontius Pilate, suffered, died, and was buried. And on the third day He rose from the dead, according to the scriptures, ascended into the heavens; He sits at the right hand of His Father, and He is coming again in His glory to judge the living and the dead, whose kingdom shall have no end.
+      </p>
+      <p>
+        Yes, we believe in the Holy Spirit, the Lord, the Life-Giver, who proceeds from the Father, who with the Father and the Son is worshiped and glorified, who spoke by the prophets. And in one holy, catholic and apostolic church. We confess one baptism for the remission of sins. We look for the resurrection of the dead, and the life of the coming age.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== BOOKS ====== -->
+<section id="books">
+  <div class="container">
+    <h2 class="section-title">Books</h2>
+    <div class="searchbar">
+      <input id="searchBooks" type="text" placeholder="Search books..." aria-label="Search books">
+    </div>
+
+    <div class="media-grid">
+      <!-- Your existing cards kept EXACTLY (images/links untouched) -->
+      <div class="media-card">
+        <img src="https://stnoufer.files.wordpress.com/2015/01/pope-shenouda-i18.jpeg" alt="Books by Pope Shenouda III">
+        <p><a href="https://www.stminahamilton.ca/groups/servants/pope-shenouda-iii-books" target="_blank" rel="noopener">More Books by Pope Shenouda III</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://www.blessedmart.com/wp-content/uploads/2020/03/Saint-Gregory-of-Nyssa-Hand-Painted-Orthodox-Icon-on-Wood-02-593x800.jpg" alt="Gregory-of-Nyssa-">
+        <p><a href="http://www.newhumanityinstitute.org/pdf-articles/Gregory-of-Nyssa-The-Life-of-Moses.pdf" target="_blank" rel="noopener">Gregory-of-Nyssa-The-Life-of-Moses</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://cdn11.bigcommerce.com/s-p1cqiyfg/product_images/uploaded_images/41msspdghkl.-sl500-.jpg" alt="Know your Faith">
+        <p><a href="https://store.ancientfaith.com/account.php?action=download_item&data=OTYwMzY5LDE5ODIsMTAwMjc3NzIyLDhlNDk0OGFlMTNkM2Y5MmQwMTgxNWVmMzdlZTQ2MWNmLDIxOSwyNTMyNzY2Nzg4OTc4MzA2NzAxODIyMDQ2ODIzOTI0MTUzOTMwOQ==" target="_blank" rel="noopener">Know the Faith</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://cdn11.bigcommerce.com/s-30c33/images/stencil/500x659/products/3840/6126/MacrinatheYoungerSmall__76922.1669914577.jpg?c=2" alt="The Life of Saint Macrina">
+        <p><a href="https://archive.org/details/ldpd_11899093_000/page/n11/mode/1up" target="_blank" rel="noopener">The Life of Saint Macrina</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://th.bing.com/th/id/R.a6f67a38c976b215f11a879ede313baa?rik=Nxk%2fhIFG3Nbf7A&pid=ImgRaw&r=0" alt="Book Cover">
+        <p><a href="https://www.documentacatholicaomnia.eu/03d/0675-0749,_Ioannes_Damascenus,_De_Fide_Orthodoxa,_EN.pdf" target="_blank" rel="noopener">On the Orthodox Faith</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://www.mountangelabbey.org/wp-content/uploads/The-Sayings-of-the-Desert-Fathers.jpg" alt="Book Cover">
+        <p><a href="http://www.g4er.tk/books/sayings-of-the-desert-fathers.pdf" target="_blank" rel="noopener">The Sayings of the Desert Fathers</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.ZAK-Ib4OE-ez0_Dr16OAmgHaKw?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Book Cover">
+        <p><a href="https://archive.org/details/onmarriagefamily0000john/mode/1up" target="_blank" rel="noopener">On Marriage and Family Life</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://m.media-amazon.com/images/I/81-JSkRRD0L._SL1500_.jpg" alt="Book Cover">
+        <p><a href="https://cdn.bookey.app/files/pdf/book/en/a-silent-patriarch.pdf" target="_blank" rel="noopener">A Silent Patriarch</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://images-na.ssl-images-amazon.com/images/I/51FDCwxA2nL.jpg" alt="Book Cover">
+        <p><a href="https://www.stminahamilton.ca/download/Books/Pope%20Shenouda%20III/English%20Books/Diabolic%20Wars.pdf" target="_blank" rel="noopener">Diabolic Wars</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://imgv2-1-f.scribdassets.com/img/word_document/261775680/original/7cbdfd694b/1570466924?v=1" alt="Book Cover">
+        <p><a href="https://thealphaandtheomega.info/index.php/downloads/send/16-doctrine/5-nature-of-christ" target="_blank" rel="noopener">The Nature of Christ</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.medw6REaOFtwznrQI79ACwAAAA?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Book Cover">
+        <p><a href="https://www.monergism.com/thethreshold/sdg/athanasius/On%20the%20Incarnation%20-%20Athanasius.pdf" target="_blank" rel="noopener">On the Incarnation</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://cdn11.bigcommerce.com/s-f4f99/images/stencil/1280x1280/products/7077/3736/PBPRIEJO__18093__75937.1339570934.jpg?c=2" alt="Book Cover">
+        <p><a href="https://archive.org/details/OnThePriesthood/mode/1up" target="_blank" rel="noopener">Six Books on the Priesthood</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://m.media-amazon.com/images/I/610YkAbHcpL._SL1433_.jpg" alt="Book Cover">
+        <p><a href="https://archive.org/details/onwealthpoverty0000john" target="_blank" rel="noopener">On Wealth and Poverty</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://catalog.obitel-minsk.com/media/catalog/product/cache/60d908687d206067369daa77fa824961/e/v/everyday-saints1ew.jpg" alt="Book Cover">
+        <p><a href="https://www.scribd.com/document/631140010/Everyday-Saints-and-Other-Stories-PDFDrive" target="_blank" rel="noopener">Everyday Saints and Other Stories</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://m.media-amazon.com/images/I/61s6sWuX2QL._SL1200_.jpg" alt="Book Cover">
+        <p><a href="https://malankaralibrary.com/ImageUpload/a491228b2afa653b54cdf0e0fe128d80.pdf" target="_blank" rel="noopener">The Way of a Pilgrim & The Pilgrim Continues His Way</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://ocf.net/wp-content/uploads/2022/08/Screenshot-2022-08-25-at-12-32-39-shenouda_front_cover__11595-webp-WEBP-Image-827-%C3%97-1280-pixels-%E2%80%94-Scaled-68-400x619.png" alt="Book Cover">
+        <p><a href="http://stphilopateerdallas.org/The%20Life%20of%20Repentance%20and%20Purity-%20HH%20Pope%20Shenouda%20III.pdf" target="_blank" rel="noopener">The Life of Repentance and Purity</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://c8.alamy.com/comp/MWNY2N/ladder-of-divine-ascent-the-ladder-of-divine-ascent-or-the-ladder-of-paradise-a-12th-century-icon-described-by-john-climacus-monastery-of-st-catherine-mount-sinai-st-john-climacus-described-the-christian-life-as-a-ladder-with-thirty-rungs-the-monks-are-tempted-by-demons-and-encouraged-by-angels-while-christ-welcomes-them-at-the-summit-jule-11-2007-pvasiliadis-597-the-ladder-of-divine-ascent-monastery-of-st-catherine-sinai-12th-century-MWNY2N.jpg" alt="Book Cover">
+        <p><a href="https://www.carmelitepriory.org/wp-content/uploads/2014/02/TheLadderofDivineAscent.pdf" target="_blank" rel="noopener">The Ladder of Divine Ascent</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://ocf.net/wp-content/uploads/2025/02/61NBeO1L1pL._SL1360_.jpg" alt="Book Cover">
+        <p><a href="https://issuu.com/ancientfaith/docs/time___despondency__sample_pages_" target="_blank" rel="noopener">Time and Despondency</a></p>
+      </div>
+
+      <div class="media-card">
+        <img src="https://smaam.church/wp-content/uploads/2018/03/Lectionary-of-Holy-Week-Preview-400x549.jpg" alt="Book Cover">
+        <p><a href="https://www.stmarystmark.ca/download/PaschaResources/LivingHolyWeek.pdf?utm_source=chatgpt.com" target="_blank" rel="noopener">Living Holy Week</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SONGS ====== -->
+<section id="songs">
+  <div class="container">
+    <h2 class="section-title">Songs</h2>
+    <div class="searchbar">
+      <input id="searchSongs" type="text" placeholder="Search songs..." aria-label="Search songs">
+    </div>
+    <div class="media-grid" id="songsGrid">
+      <div class="media-card">
+        <img src="https://via.placeholder.com/150" alt="Album Cover">
+        <p>Song Title One</p>
+      </div>
+      <div class="media-card">
+        <img src="https://via.placeholder.com/150" alt="Album Cover">
+        <p>Song Title Two</p>
+      </div>
+      <!-- Add more song cards as needed -->
+    </div>
+  </div>
+</section>
+
+<!-- ====== PICTURES ====== -->
+<section id="pictures">>
+  <div class="container">
+    <h2 class="section-title">Pictures</h2>
+    <p style="margin:10px 0 18px">Add your church photos here—processions, feasts, youth events, and celebrations.</p>
+
+    
+      <!-- Replace or add your own images freely -->
+      <figure>
+        <img src="photo_2025-08-15_22-27-17.jpg" alt="pictures">
+        <figcaption>Church icon</figcaption>
+      </figure>
+      <figure>
+        <img src="https://m.media-amazon.com/images/I/81-JSkRRD0L._SL1500_.jpg" alt="Cover">
+        <figcaption>Community reading</figcaption>
+      </figure>
+      <figure>
+        <img src="https://smaam.church/wp-content/uploads/2018/03/Lectionary-of-Holy-Week-Preview-400x549.jpg" alt="Holy Week">
+        <figcaption>Holy Week</figcaption>
+      </figure>
+      <!-- Add as many <figure>...</figure> as you like -->
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Contact Us</h2>
+
+    <div class="contact-card">
+      <form id="contactForm" action="mailto:example@yourchurch.org" method="post" enctype="text/plain">
+        <input type="text" name="Name" placeholder="Your Name" required>
+        <input type="email" name="Email" placeholder="Your Email" required>
+        <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <small style="color:#666">Tip: replace the email in the form action with your church address, or use Formspree.</small>
+      </form>
+
+      <div>
+        <div class="hero-card">
+          <strong>Visit Us</strong>
+          <p>Philadelphia, PA (exact address here)</p>
+          <p>Phone: (xxx) xxx-xxxx</p>
+          <p>Email: example@yourchurch.org</p>
+        </div>
+        <div class="hero-card" style="margin-top:12px">
+          <strong>Follow</strong>
+          <p>Facebook • Instagram • YouTube</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Debre Genet Kidus Amanuel EOTC — All rights reserved.
+</footer>
+
+<button id="toTop" aria-label="Back to top">↑</button>
+
+<!-- ====== GOOGLE TRANSLATE WIDGET ====== -->
+<script>
+function googleTranslateElementInit(){
+  new google.translate.TranslateElement({
+    pageLanguage:'en',
+    includedLanguages:'am,es,en', // Amharic, Spanish, English + users can open "More"
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
+}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- ====== APP JS ====== -->
+<script>
+// Welcome dismiss
+document.getElementById('skipWelcome').addEventListener('click',()=> {
+  const w=document.getElementById('welcome'); w.style.animation='fadeOut .6s ease forwards';
+});
+
+// Live search (Books & Songs)
+function attachSearch(inputId, cardsSelector){
+  const input=document.getElementById(inputId);
+  input.addEventListener('input',()=>{
+    const q=input.value.trim().toLowerCase();
+    document.querySelectorAll(cardsSelector).forEach(card=>{
+      const txt=card.textContent.toLowerCase();
+      card.style.display = txt.includes(q) ? '' : 'none';
+    });
+  });
+}
+attachSearch('searchBooks', '#books .media-card');
+attachSearch('searchSongs', '#songs .media-card');
+
+// Back to top
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{ if(window.scrollY>600){toTop.classList.add('show')} else {toTop.classList.remove('show')}});
+toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Year
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
