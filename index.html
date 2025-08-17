@@ -8,207 +8,50 @@
 <!-- ====== FONTS ====== -->
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-<style>
-/* ------------------------
-   Base & Theme
-------------------------- */
-:root{
-  --gold:#d4af37;
-  --deep:#5a2e19;
-  --bg1:#fff8f0;
-  --bg2:#fbe4d8;
-  --card:#ffffff;
-  --text:#333;
-  --soft:rgba(212,175,55,.25);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Poppins',sans-serif;
-  color:var(--text);
-  background:linear-gradient(135deg,var(--bg1),var(--bg2),#ffe9cc);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-
-/* ------------------------
-   Welcome Overlay (optional)
-------------------------- */
-#welcome{
-  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-  flex-direction:column;gap:16px;background:radial-gradient(1200px 600px at 50% -10%,rgba(255,255,255,.95),rgba(255,255,255,.8),rgba(255,255,255,.6) 60%,transparent 70%), linear-gradient(180deg,#fff9f1,rgba(255,255,255,.7));
-  z-index:9999;animation:fadeOut 1s ease 3.5s forwards;
-}
-.rays{
-  position:absolute;inset:-20%;
-  background:radial-gradient(circle at center, rgba(255,255,200,.6) 0%, transparent 60%);
-  animation:spin 12s linear infinite;filter:blur(12px);
-}
-#welcome h2{
-  font-size:2rem;color:var(--deep);text-align:center;
-  text-shadow:0 0 24px rgba(255,255,255,.9),0 0 40px var(--soft);
-}
-#skipWelcome{
-  background:var(--deep);color:#fff;border:none;padding:8px 14px;border-radius:999px;
-  cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.15);
-}
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-@keyframes fadeOut{to{opacity:0;visibility:hidden}}
-
-/* ------------------------
-   Nav
-------------------------- */
-.navbar{
-  position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);
-  box-shadow:0 6px 24px rgba(0,0,0,.07);
-}
-.nav-inner{
-  max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
-  padding:14px 18px;
-}
-.brand{font-weight:800;color:var(--deep);letter-spacing:.3px}
-nav a{
-  text-decoration:none;color:#444;margin:0 10px;padding:6px 10px;border-radius:999px;transition:.25s;
-}
-nav a:hover{background:rgba(212,175,55,.15);color:var(--deep)}
-
-/* Google Translate box alignment */
-#translateWrap{display:flex;align-items:center;gap:10px}
-
-/* ------------------------
-   Sections
-------------------------- */
-section{padding:56px 18px}
-.container{max-width:1200px;margin:0 auto}
-.section-title{
-  font-size:2rem;color:var(--deep);margin-bottom:18px;display:inline-block;
-  border-left:6px solid var(--gold);padding-left:12px;
-  background:linear-gradient(90deg,rgba(212,175,55,.12),transparent);
-  animation:slideIn .6s ease both;
-}
-@keyframes slideIn{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:translateX(0)}}
-
-/* ------------------------
-   Hero / Home
-------------------------- */
-.hero{
-  display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center
-}
-.hero h1{
-  font-size:2.6rem;color:var(--deep);
-  text-shadow:0 0 18px rgba(255,255,255,.9),0 0 24px var(--soft);
-}
-.hero p{margin-top:10px;line-height:1.75}
-.hero-card{
-  background:var(--card);border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.08)
-}
-@media (max-width:900px){.hero{grid-template-columns:1fr}}
-
-/* ------------------------
-   Shared grids
-------------------------- */
-.media-grid{
-  display:grid;gap:20px;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-}
-.media-card{
-  background:var(--card);border-radius:16px;padding:14px;text-align:center;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  transition:transform .35s ease, box-shadow .35s ease; cursor:pointer;
-}
-.media-card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,0,0,.12),0 0 0 6px rgba(212,175,55,.15)}
-.media-card img{width:100%;border-radius:10px;margin-bottom:10px;transition:transform .35s}
-.media-card:hover img{transform:scale(1.04)}
-.media-card p{font-weight:600}
-.media-card a{text-decoration:none;color:#444}
-.media-card a:hover{color:var(--deep)}
-
-/* Search bars */
-.searchbar{
-  margin:8px 0 22px 0;display:flex;justify-content:center
-}
-.searchbar input{
-  width:min(720px,95%);padding:12px 16px;border-radius:999px;border:2px solid transparent;outline:none;
-  box-shadow:0 8px 24px rgba(0,0,0,.06);transition:.3s;background:#fff;
-}
-.searchbar input:focus{border-color:var(--gold);box-shadow:0 0 0 6px rgba(212,175,55,.18)}
-
-/* ------------------------
-   Pictures gallery
-------------------------- */
-.gallery{columns:1;column-gap:16px}
-@media (min-width:640px){.gallery{columns:2}}
-@media (min-width:980px){.gallery{columns:3}}
-.gallery figure{
-  break-inside:avoid;background:#fff;margin:0 0 16px;border-radius:14px;overflow:hidden;
-  box-shadow:0 8px 24px rgba(0,0,0,.08);transition:transform .25s
-}
-.gallery figure:hover{transform:translateY(-4px)}
-.gallery img{width:100%;display:block}
-.gallery figcaption{padding:10px 12px;font-size:.9rem;color:#555}
-
-/* ------------------------
-   Contact
-------------------------- */
-.contact-card{
-  background:#fff;border-radius:16px;padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.08);
-  display:grid;gap:16px;grid-template-columns:1fr 1fr;
-}
-.contact-card form{display:grid;gap:10px}
-.contact-card input,.contact-card textarea{
-  width:100%;padding:12px 14px;border-radius:12px;border:1.5px solid #ddd;outline:none;transition:.25s;background:#fff
-}
-.contact-card input:focus,.contact-card textarea:focus{border-color:var(--gold);box-shadow:0 0 0 6px rgba(212,175,55,.12)}
-.contact-card button{
-  background:linear-gradient(135deg,var(--deep),#7a4a31);color:#fff;border:none;border-radius:999px;
-  padding:12px 16px;cursor:pointer;transition:.25s
-}
-.contact-card button:hover{filter:brightness(1.06)}
-@media(max-width:900px){.contact-card{grid-template-columns:1fr}}
-
-/* ------------------------
-   Footer & Back to top
-------------------------- */
-footer{padding:30px 18px;text-align:center;color:#666}
-#toTop{
-  position:fixed;right:16px;bottom:16px;background:var(--deep);color:#fff;border:none;border-radius:999px;
-  padding:10px 12px;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.2);display:none
-}
-#toTop.show{display:block}
-</style>
+    <link rel="stylesheet" href="styles.css">
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const skipBtn = document.getElementById('skipWelcome');
+  const welcome = document.getElementById('welcome');
+  if (skipBtn && welcome) {
+    skipBtn.addEventListener('click', () => {
+      welcome.style.opacity = '0';
+      welcome.style.visibility = 'hidden';
+    });
+  }
+});
+</script>
 </head>
 <body>
-
 <!-- ====== Welcome Overlay (optional) ====== -->
 <div id="welcome" aria-hidden="true">
   <div class="rays"></div>
   <h2>Welcome — Peace be with you ✨</h2>
   <button id="skipWelcome">Enter Site</button>
 </div>
-
-<!-- ====== NAVBAR ====== -->
+<!-- DGKA Logo -->
 <header class="navbar">
-  <div class="nav-inner">
-    <div class="brand">Debre Genet Kidus Amanuel EOTC</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#books">Books</a>
-      <a href="#songs">Songs</a>
-      <a href="#pictures">Pictures</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div id="translateWrap">
-      <span style="font-size:.9rem;color:#666">Translate:</span>
-      <div id="google_translate_element"></div>
-    </div>
+  <img class="logo" src="photo_2025-08-16_11-57-53.jpg" alt="DGKA Logo">
+  <div class="brand">Debre Genet Kidus Amanuel EOTC</div>
+  
+  <!-- Main Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#books">Books</a>
+    <a href="#songs">Psalm</a>
+    <a href="#pictures">Pictures</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Translate Section -->
+  <div id="translateWrap">
+    <div id="google_translate_element"></div>
   </div>
 </header>
 
-<!-- ====== HOME ====== -->
-<section id="home">
-  <div class="container">
+  <section id="home" class="section">
+    <div class="container">
     <div class="hero">
       <div>
         <h1>Welcome to Our Church Family</h1>
@@ -218,11 +61,11 @@ footer{padding:30px 18px;text-align:center;color:#666}
         </p>
       </div>
       <div class="hero-card">
-        <strong>Service Times (example)</strong>
+        <strong>Service Times </strong>
         <ul style="margin-top:8px;line-height:1.9">
-          <li>Saturday Vespers – 6:00 PM</li>
-          <li>Sunday Divine Liturgy – 9:00 AM</li>
-          <li>Bible Study – Wed 7:00 PM</li>
+          <li>Liturgy – Sun 6:00 AM</li>
+          <li>zemariyan– Fri 6:30-8:00PM sat 3:00-6:00PM </li>
+          <li>Bible Study – Sunday 12:00 AM</li>
         </ul>
       </div>
     </div>
@@ -230,7 +73,7 @@ footer{padding:30px 18px;text-align:center;color:#666}
 </section>
 
 <!-- ====== ABOUT ====== -->
-<section id="about">
+<section id="about" class="section">
   <div class="container">
     <h2 class="section-title">About Our Church</h2>
     <div class="hero-card" style="animation:slideIn .6s .1s both">
@@ -248,7 +91,7 @@ footer{padding:30px 18px;text-align:center;color:#666}
 </section>
 
 <!-- ====== BOOKS ====== -->
-<section id="books">
+<section id="books"class="section">
   <div class="container">
     <h2 class="section-title">Books</h2>
     <div class="searchbar">
@@ -356,26 +199,119 @@ footer{padding:30px 18px;text-align:center;color:#666}
 </section>
 
 <!-- ====== SONGS ====== -->
-<section id="songs">
+<section id="songs"class="section">
   <div class="container">
     <h2 class="section-title">Songs</h2>
     <div class="searchbar">
       <input id="searchSongs" type="text" placeholder="Search songs..." aria-label="Search songs">
     </div>
-    <div class="media-grid" id="songsGrid">
-      <div class="media-card">
-        <img src="https://via.placeholder.com/150" alt="Album Cover">
-        <p>Song Title One</p>
-      </div>
-      <div class="media-card">
-        <img src="https://via.placeholder.com/150" alt="Album Cover">
-        <p>Song Title Two</p>
-      </div>
+      <div class="content">
+       <div class="content">
+        <h2>Featured Videos</h2>
+        <div class="video-row">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Wdx3l0WUcVk" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/C1MT_Atj1kQ" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/kG5o9_wu62c" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/IClX2ONq20I" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Za7qPwmGxH0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/786wgzpgb0k" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/kIcgYRXfPn0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/11Qy6NpiI1A" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/3m8uN93eKy0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/edgXuyv_smM" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/2GuMZISXofI" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/1oYguh6kh8M" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/zLkx86O9nw4" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/JbnfgFR_8wQ" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/rtvWOcuO1m4" allowfullscreen></iframe>
+            </div>
+  
       <!-- Add more song cards as needed -->
+    </div>
+<section id="mezmur-playlist" class="media-section">
+  <div class="container">
+    <h2 class="section-title">Ethiopian Orthodox Mezmur Playlist</h2>
+
+    <div class="playlist-wrapper">
+      <!-- Left: Player + Controls -->
+      <div class="player-panel">
+        <div class="cover-wrap">
+          <img id="player" src="Panagia Portaitissa Icon - Orthodox Icons - BlessedMart.jpg" alt="cover">
+        </div>
+
+        <div class="track-info">
+          <div id="trackTitle">Select a mezmur</div>
+          <div id="trackArtist" class="muted">Debre Genet Kidus Amanuel</div>
+        </div>
+
+        <audio id="audio" preload="metadata"></audio>
+
+        <div class="controls">
+          <button id="prevBtn" title="Previous">⏮</button>
+          <button id="playBtn" title="Play/Pause">▶️</button>
+          <button id="nextBtn" title="Next">⏭</button>
+        </div>
+
+        <div class="progress-wrap">
+          <span id="currentTime">00:00</span>
+          <input id="progress" type="range" min="0" max="100" value="0">
+          <span id="duration">00:00</span>
+        </div>
+
+        <div class="extra-controls">
+          <button id="shuffleBtn" title="Shuffle">🔀</button>
+          <button id="repeatBtn" title="Repeat">🔁</button>
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="0.9" title="Volume">
+        </div>
+      </div>
+
+      <!-- Right: Playlist + Search -->
+      <div class="playlist-panel">
+        <div class="searchbar">
+          <input id="songSearch" placeholder="Search mezmurs..." />
+        </div>
+
+        <ul id="playlist" class="playlist-list">
+          <!-- JS will populate this -->
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
+  </div>
+</section>
+
+</script>
 <!-- ====== PICTURES ====== -->
 <section id="pictures">>
   <div class="container">
@@ -385,17 +321,30 @@ footer{padding:30px 18px;text-align:center;color:#666}
     
       <!-- Replace or add your own images freely -->
       <figure>
-        <img src="photo_2025-08-15_22-27-17.jpg" alt="pictures">
-        <figcaption>Church icon</figcaption>
+        <img src="chruch1.jpg" alt="">
       </figure>
       <figure>
-        <img src="https://m.media-amazon.com/images/I/81-JSkRRD0L._SL1500_.jpg" alt="Cover">
-        <figcaption>Community reading</figcaption>
+        <img src="chruch 2.jpg" alt="">
       </figure>
       <figure>
-        <img src="https://smaam.church/wp-content/uploads/2018/03/Lectionary-of-Holy-Week-Preview-400x549.jpg" alt="Holy Week">
-        <figcaption>Holy Week</figcaption>
+        <img src="chruch 3.jpg" alt="">
       </figure>
+      <figure>
+      <img src="kesis and mezmur.jpg" alt="">
+      </figure>
+      <figure>
+       <img src="yonas and the mezmur .jpg" alt="">
+      </figure>
+      <figure>
+       <img src="yand M.jpg" alt="">
+      </figure>
+      <figure>
+       <img src="ym.jpg" alt="">
+      </figure>
+      <figure>
+       <img src="endale mezmur.jpg" alt="">
+      </figure>
+    
       <!-- Add as many <figure>...</figure> as you like -->
     </div>
   </div>
@@ -412,19 +361,29 @@ footer{padding:30px 18px;text-align:center;color:#666}
         <input type="email" name="Email" placeholder="Your Email" required>
         <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
         <button type="submit">Send Message</button>
-        <small style="color:#666">Tip: replace the email in the form action with your church address, or use Formspree.</small>
+        <small style="color:#726c6c">Tip: replace the email in the form action with your church address, or use Formspree.</small>
       </form>
 
       <div>
         <div class="hero-card">
           <strong>Visit Us</strong>
-          <p>Philadelphia, PA (exact address here)</p>
+          <p>Philadelphia, PA (7100 Woodland Ave, Philadelphia, PA 19142)</p>
           <p>Phone: (xxx) xxx-xxxx</p>
           <p>Email: example@yourchurch.org</p>
         </div>
         <div class="hero-card" style="margin-top:12px">
-          <strong>Follow</strong>
-          <p>Facebook • Instagram • YouTube</p>
+<!-- Contact Us Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: dgkamezmur@gmail.com</p>
+  <p>Phone: xxx-xxx-xxxx</p>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/dgka.mezmur?utm_source=ig_web_button_share_sheet&igsh=MW5najJ5a3IyaGNiYg==" 
+     target="_blank" class="instagram-link">
+    Follow us on Instagram
+  </a>
+</section>
         </div>
       </div>
     </div>
@@ -448,35 +407,5 @@ function googleTranslateElementInit(){
 }
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<!-- ====== APP JS ====== -->
-<script>
-// Welcome dismiss
-document.getElementById('skipWelcome').addEventListener('click',()=> {
-  const w=document.getElementById('welcome'); w.style.animation='fadeOut .6s ease forwards';
-});
-
-// Live search (Books & Songs)
-function attachSearch(inputId, cardsSelector){
-  const input=document.getElementById(inputId);
-  input.addEventListener('input',()=>{
-    const q=input.value.trim().toLowerCase();
-    document.querySelectorAll(cardsSelector).forEach(card=>{
-      const txt=card.textContent.toLowerCase();
-      card.style.display = txt.includes(q) ? '' : 'none';
-    });
-  });
-}
-attachSearch('searchBooks', '#books .media-card');
-attachSearch('searchSongs', '#songs .media-card');
-
-// Back to top
-const toTop=document.getElementById('toTop');
-window.addEventListener('scroll',()=>{ if(window.scrollY>600){toTop.classList.add('show')} else {toTop.classList.remove('show')}});
-toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-// Year
-document.getElementById('year').textContent=new Date().getFullYear();
-</script>
+<script src="script.js" defer></script>
 </body>
-</html>

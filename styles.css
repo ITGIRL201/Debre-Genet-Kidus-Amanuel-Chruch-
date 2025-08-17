@@ -1,0 +1,792 @@
+/* ===========================
+   GLOBAL STYLES
+=========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fffdf7; /* soft cream background */
+    color: #c7a878; /* dark text for contrast */
+    line-height: 1.6;
+}
+
+a {
+    color: #c8b267; /* muted gold */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #8f7d3d; /* slightly darker gold */
+}
+
+/* ===========================
+   HEADER / NAVBAR
+=========================== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #fff9e6; /* very soft cream */
+    border-bottom: 2px solid #8f7d45;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.navbar .logo {
+    width: 80px;
+    border-radius: 10px;
+}
+
+.navbar .brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #e1c768;
+    margin-left: 15px;
+}
+
+.navbar nav a {
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.navbar nav a:hover {
+    color: #ceb871;
+}
+
+/* ===========================
+   WELCOME OVERLAY
+=========================== */
+#welcome {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #fff9e6, #f0e2b6);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #bfa031;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  animation: fadeIn 1s ease;
+}
+
+#welcome.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+.rays {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #d4af37 0%, #f0e2b6 70%, transparent 80%);
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#welcome h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #bfa031;
+  animation: slideDown 0.8s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+#welcome button {
+  background: #e0c15c;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #4b3e2a;
+  transition: all 0.3s;
+}
+
+#welcome button:hover {
+   background: #d4af37;
+   transform: scale(1.05);
+}
+
+/* ===========================
+   SECTIONS
+=========================== */
+section {
+    padding: 4rem 1rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #bfa031;
+    text-shadow: 1px 1px 2px #d4af37;
+    animation: fadeIn 1s ease;
+}
+
+/* ===========================
+   HERO / HOME
+=========================== */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.hero > div {
+    flex: 1 1 400px;
+    animation: fadeIn 1s ease;
+}
+
+.hero p {
+    margin-top: 10px;
+    line-height: 1.8;
+    color: #4b3e2a;
+}
+
+.hero-card {
+    background: #fff6d9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* ===========================
+   BOOKS / SONGS CARDS
+=========================== */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.media-card {
+    background: #fff7e1;
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.8s ease;
+}
+
+.media-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ===========================
+   VIDEO ROW
+=========================== */
+.video-row {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+}
+
+.video-container {
+    flex: 0 0 300px;
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff7e1;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.8s ease;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 180px;
+    border: none;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ===========================
+   SEARCH INPUT
+=========================== */
+.searchbar input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 25px;
+    border: 2px solid #bfa031;
+    outline: none;
+    margin: 0 auto 20px;
+    display: block;
+    transition: all 0.3s;
+}
+
+.searchbar input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+    background: #fff9e6;
+    color: #4b3e2a;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid #d4af37;
+}
+/* ===========================
+   GLOBAL STYLES
+=========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fffdf7; /* soft cream background */
+    color: #4b3e2a; /* dark text for contrast */
+    line-height: 1.6;
+}
+
+a {
+    color: #d4af37; /* muted gold */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #bfa031; /* slightly darker gold */
+}
+
+/* ===========================
+   HEADER / NAVBAR
+=========================== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #fff9e6; /* very soft cream */
+    border-bottom: 2px solid #d4af37;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.navbar .logo {
+    width: 80px;
+    border-radius: 10px;
+}
+
+.navbar .brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #bfa031;
+    margin-left: 15px;
+}
+
+.navbar nav a {
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.navbar nav a:hover {
+    color: #d4af37;
+}
+
+/* ===========================
+   WELCOME OVERLAY
+=========================== */
+#welcome {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, #fff9e6, #f0e2b6);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #bfa031;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  animation: fadeIn 1s ease;
+}
+
+#welcome.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+.rays {
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, #d4af37 0%, #f0e2b6 70%, transparent 80%);
+  border-radius: 50%;
+  margin-bottom: 20px;
+  animation: rotate 6s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+#welcome h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #bfa031;
+  animation: slideDown 0.8s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+#welcome button {
+  background: #e0c15c;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #4b3e2a;
+  transition: all 0.3s;
+}
+
+#welcome button:hover {
+   background: #d4af37;
+   transform: scale(1.05);
+}
+
+/* ===========================
+   SECTIONS
+=========================== */
+section {
+    padding: 4rem 1rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #bfa031;
+    text-shadow: 1px 1px 2px #d4af37;
+    animation: fadeIn 1s ease;
+}
+
+/* ===========================
+   HERO / HOME
+=========================== */
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.hero > div {
+    flex: 1 1 400px;
+    animation: fadeIn 1s ease;
+}
+
+.hero p {
+    margin-top: 10px;
+    line-height: 1.8;
+    color: #4b3e2a;
+}
+
+.hero-card {
+    background: #fff6d9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* ===========================
+   BOOKS / SONGS CARDS
+=========================== */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.media-card {
+    background: #fff7e1;
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.8s ease;
+}
+
+.media-card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.media-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ===========================
+   VIDEO ROW
+=========================== */
+.video-row {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-behavior: smooth;
+}
+
+.video-container {
+    flex: 0 0 300px;
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff7e1;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeIn 0.8s ease;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 180px;
+    border: none;
+}
+
+.video-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ===========================
+   SEARCH INPUT
+=========================== */
+.searchbar input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 25px;
+    border: 2px solid #bfa031;
+    outline: none;
+    margin: 0 auto 20px;
+    display: block;
+    transition: all 0.3s;
+}
+
+.searchbar input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+    background: #fff9e6;
+    color: #4b3e2a;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    border-top: 2px solid #d4af37;
+}
+/* ===========================
+   MEDIA / MEZMUR PLAYLIST
+=========================== */
+#mezmur-playlist {
+    background: #fffdf7; /* soft cream background */
+    padding: 3rem 1rem;
+}
+
+.playlist-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.player-panel {
+    flex: 1 1 400px;
+    background: #fff6d9;
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(212,175,55,0.2);
+    animation: fadeIn 0.8s ease;
+}
+
+.player-panel img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.player-panel img:hover {
+    transform: scale(1.03);
+}
+
+.track-info {
+    margin-bottom: 15px;
+}
+
+.track-info #trackTitle {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #4b3e2a;
+}
+
+.track-info .muted {
+    font-size: 0.9rem;
+    color: #726c6c;
+}
+
+.controls,
+.extra-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.controls button,
+.extra-controls button {
+    background: #d4af37;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.controls button:hover,
+.extra-controls button:hover {
+    background: #bfa031;
+    transform: scale(1.1);
+}
+
+.progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.progress-wrap input[type="range"] {
+    flex: 1;
+    cursor: pointer;
+    accent-color: #d4af37;
+}
+
+#volume {
+    width: 100px;
+}
+
+/* Playlist Panel */
+.playlist-panel {
+    flex: 1 1 300px;
+}
+
+.searchbar input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 2px solid #bfa031;
+    outline: none;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+}
+
+.searchbar input:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212,175,55,0.3);
+}
+
+.playlist-list li {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    list-style: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.playlist-list li:hover,
+.playlist-list li.active {
+    background: rgba(212,175,55,0.2);
+}
+
+/* ===========================
+   PICTURES
+=========================== */
+#pictures {
+    background: #fff9e6;
+    padding: 3rem 1rem;
+}
+
+#pictures figure {
+    display: inline-block;
+    margin: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(212,175,55,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#pictures figure img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+#pictures figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212,175,55,0.3);
+}
+
+/* ===========================
+   CONTACT FORM
+=========================== */
+#contact {
+    background: #fffdf7;
+    padding: 3rem 1rem;
+}
+
+.contact-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.contact-card form {
+    flex: 1 1 350px;
+    background: #fff6d9;
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-card form input,
+.contact-card form textarea {
+    padding: 10px;
+    border-radius: 12px;
+    border: 2px solid #bfa031;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.contact-card form input:focus,
+.contact-card form textarea:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 10px rgba(212,175,55,0.3);
+}
+
+.contact-card form button {
+    background: #d4af37;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #4b3e2a;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.contact-card form button:hover {
+    background: #bfa031;
+    transform: scale(1.05);
+}
+
+.hero-card {
+    background: #fff6d9;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(212,175,55,0.2);
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.hero-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(212,175,55,0.3);
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
